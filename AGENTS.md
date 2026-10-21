@@ -1,6 +1,6 @@
 # Instructions for agents maintaining dev-standards
 
-Read [README.md](README.md) and the policy that owns the area being changed. This repository contains documentation, templates and illustrative configuration only. MUST, SHOULD and MAY have the meanings in README.
+Read [README.md](README.md) and the policy that owns the area being changed. This repository contains documentation, templates, illustrative configuration and an optional local skill-link installer. MUST, SHOULD and MAY have the meanings in README.
 
 - Preserve independent project implementation. Do not add a shared executable build system, mandatory parser, reusable central workflow dependency, or runtime service.
 - Read [ARCHITECTURE.md](ARCHITECTURE.md) for architecture changes. Keep conditional technology preferences at SHOULD level, preserve justified alternatives, and never require framework adoption or a rewrite solely for standardization. Review data recovery, offline behavior, privacy and platform integration independently of stack choice.

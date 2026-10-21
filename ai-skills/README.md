@@ -21,27 +21,25 @@ Discussion can end with a recommendation, design with a handoff, implementation 
 
 ## Installation and discovery
 
-Keep `ai-skills/` as the single content source. Merely adding it to a checkout does not make it a default discovery directory. [Codex's documented local discovery](https://developers.openai.com/codex/skills/) scans `.agents/skills` from the working directory to the repository root and supports symlinked skill folders. The user-level location is `~/.agents/skills`. Do not install the same skill at multiple scopes under the same name.
+Keep `ai-skills/` as the single content source. On Linux, run the [installer](install.sh) from this checkout:
 
-For repository-local discovery, run this from the dev-standards root, repeating the second command for each skill wanted:
-
-```sh
-mkdir -p .agents/skills
-ln -s ../../ai-skills/explore-idea .agents/skills/
+```bash
+./ai-skills/install.sh
 ```
 
-For an adopting project with a sibling checkout at `../dev-standards`, run from that project's root instead:
+The installer needs Bash and standard Linux utilities (`readlink -f`, `dirname`, `mkdir`, and `ln`). It locates the source relative to its own file, so it also works from another directory or when invoked through a symlink. It exposes every skill folder containing `SKILL.md` through an individual symlink in `~/.agents/skills/`. No project-local installation or copied skill content is needed.
 
-```sh
-mkdir -p .agents/skills
-ln -s ../../../dev-standards/ai-skills/implement-feature .agents/skills/
-```
+Repeated runs leave links to the same canonical folders untouched. Existing files, directories, dangling links, and links to other sources with matching skill names are reported as conflicts and preserved. Nonconflicting skills are still installed; any conflict or installation error returns a nonzero status. Resolve conflicts yourself and rerun; the script never removes or replaces existing entries. Unrelated skills are untouched. Moving the checkout breaks installed links, so keep it in a stable location. Link targets are computed locally at installation time, with no machine-specific paths in versioned configuration.
 
-These are optional POSIX shell examples, not commands performed by loading a skill. Adjust the relative target for the actual checkout layout. `ln` intentionally refuses an existing destination; inspect name collisions instead of overwriting them. For user-level discovery, create individual links in `~/.agents/skills` pointing to the chosen checkout. Use native symlink/junction tooling where appropriate on other systems; moving or removing the source checkout can break links.
+[Codex's documented discovery](https://developers.openai.com/codex/skills/) supports these user-level symlinks. Verify the skills appear in `/skills`; restart if changes are not visible. Avoid duplicate installations at project and user scope. Other Agent Skills-compatible tools can use `~/.agents/skills` if supported, register this checkout's `ai-skills/` as a search root, or link its individual folders into their documented discovery location. The standard file format does not prescribe a shared discovery directory. Use native link tooling on other systems; if a host cannot follow links or register external folders, explicitly ask it to read the canonical `SKILL.md` instead. Manual loading is not automatic discovery.
 
-Verify selected skills appear in `/skills`; restart Codex if changes are not visible. Other Agent Skills hosts can register the same canonical folders using their documented discovery mechanism. If folder links are unsupported, point the agent at the canonical `SKILL.md` explicitly; manual loading is not automatic discovery. For example: “Read `../dev-standards/ai-skills/review-change/SKILL.md` and review this diff.” No second maintained copy or host-specific frontmatter is needed.
+## Project access to standards
 
-Use a checkout at a chosen immutable revision for reproducible distribution and update it deliberately. Skill selection/versioning is independent of a project's standards adoption pin: always resolve policies through that project's adoption record, even when the skills checkout differs. In this standards repository, the root policies apply directly. In a project without an adoption record, follow its own instructions without assuming dev-standards adoption or claiming compliance; missing verified policies block policy-dependent release decisions.
+Global skill discovery does not load this repository's AGENTS.md into other projects. Use the [project AGENTS.md template](../templates/AGENTS.project.md) and [adoption record](../templates/DEVELOPMENT_STANDARDS.md) to point to a verified policy source at the project's pinned revision, following [ADOPTION.md](../ADOPTION.md#agent-resolution-and-offline-use). Resolve project paths from the project root and policy filenames from that verified source, independently of the installed skill path or current working directory.
+
+The policy source can be a verified snapshot or a pinned central checkout reachable through a project-relative path, for example `../dev-standards-pinned`. Fill the existing snapshot/source fields with that path and its verification method. Keep only pointers and project-owned commands/context in AGENTS.md; the policy files own the rules. A shared checkout must remain available at the recorded revision; use the verified offline source/failure behavior in ADOPTION.md when it is unavailable. This does not require copying any skill into a project.
+
+Use a chosen immutable skills revision for reproducibility and update deliberately. Skills and standards pins are independent: an updated skills checkout never changes a project's adopted policies. This standards repository uses its root policies directly. Projects without an adoption record use their own instructions without assuming adoption or compliance.
 
 ## Design basis and compatibility
 
@@ -49,7 +47,7 @@ Use a checkout at a chosen immutable revision for reproducible distribution and 
 - Matt Pocock's [writing-for-agents guidance](https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/writing-for-agents/SKILL.md) informed conditional context pointers, explicit completion outcomes, and pruning repeated or discoverable information. Its [skill mechanics](https://github.com/mattpocock/skills/blob/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/writing-for-agents/SKILL-MECHANICS.md) are host-specific where they prescribe invocation fields; those fields are not copied here.
 - [Official OpenAI documentation](https://developers.openai.com/codex/skills/) confirms instruction-only skills, description-based selection, progressive disclosure, and symlink discovery. Optional OpenAI UI metadata and plugin packaging are unnecessary for this local folder distribution.
 
-Only metadata is needed for selection; load a selected body and applicable project context on demand. No supporting references or scripts are needed for these short workflows. Prefer existing deterministic checks for mechanical work. Natural-language boundaries guide behavior; they are not a tool sandbox or an enforcement mechanism. Discovery, link support, and implicit selection remain host/version dependent.
+Only metadata is needed for selection; load a selected body and applicable project context on demand. The installer only creates local links; skill workflows need no executable dependency. Prefer existing deterministic checks for mechanical work. Natural-language boundaries guide behavior; they are not a tool sandbox or an enforcement mechanism. Discovery, link support, and implicit selection remain host/version dependent.
 
 ## Validation
 
@@ -58,8 +56,10 @@ Use the optional [skill acceptance cases](../COMPLIANCE.md#optional-ai-skills) w
 Local validation on 2026-10-21:
 
 - All six skills passed `skills-ref` at revision `69ef37e9424c0a7ea9dd2293b559e43ec8176379` and the available Codex skill-authoring validator. A six-entry discovery manifest was generated successfully. Validators were temporary tools, not repository dependencies.
-- Repository checks resolved 110 relative links/anchors, parsed 12 YAML documents (including all six frontmatters), and checked the structure/unique IDs of 92 acceptance cases, including K01–K07. Both documented POSIX discovery examples ran in isolated fixtures; linked content matched, and repeated installation failed without changing source files. `git diff --check` passed.
+- Integration checks resolved 114 relative links/anchors, parsed 12 YAML documents (including all six frontmatters), and checked the structure/unique IDs of 94 acceptance cases, including K01–K09. `bash -n` and `git diff --check` passed.
+- Installer fixtures exercised fresh/repeat installs, unrelated skills, equivalent relative links, file/directory/wrong/dangling/looping link conflicts, source/home paths with spaces, invocation from another directory and through a symlink, missing skills/HOME, invalid arguments, and blocked destinations. Conflicts returned nonzero without changing existing entries or source contents; nonconflicting skills installed. A nested-project fixture resolved the centralized policy pointers without project skill copies; this checked paths, not an application's policy pin or compliance.
+- Running the installer against the actual user directory found all six links already correct and left them and the unrelated skill unchanged. All six skills are present in this session's available-skills catalog.
 - Manual instruction walkthroughs covered the six positive and six unrelated prompts above, expected outputs, discussion agreement, design/review/retro-only requests, release readiness without mutation authority, older/missing pinned policies, and unavailable tests. These are instruction reviews, not executed model evaluations.
 - Full skill files measured 252–470 tokens each; combined names/descriptions measured 244 tokens using `cl100k_base`. Actual host/model tokenization and discovery overhead vary.
 
-Actual Codex `/skills` discovery, behavioral selection in fresh agent sessions, and Windows link tooling were not exercised. Format validation and filesystem discovery fixtures do not establish cross-agent behavioral guarantees or application compliance.
+Interactive Codex `/skills`, behavioral selection in fresh agent sessions, other hosts, and Windows link tooling were not exercised. Format validation and filesystem discovery fixtures do not establish cross-agent behavioral guarantees or application compliance.
