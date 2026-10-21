@@ -135,6 +135,20 @@ These cases exercise [VERSIONING.md](VERSIONING.md#explicit-version-bump) and th
 | P02 | Explicit migration request with old/new pins | Review delta, implement, validate and update adoption | Snapshot/mapping/pin/evidence updated coherently; identities preserved; extra distribution separately authorized | Pin-only upgrade, erased reservations or accidental new deployment |
 | P03 | Native metadata used instead of example YAML | Audit mapping and inject unknown target/invalid mode | Equivalent concepts documented; invalid operation blocked; no duplicated editable version | Configuration silently permissive or mandatory concept missing |
 
+## Optional AI skills
+
+These checks apply to maintenance of the optional [AI skills collection](ai-skills/README.md), not application compliance. Projects need not install skills. Skill bodies own workflow guidance; the policies above retain their existing scope and authority. Use temporary validation tools and nonmutating walkthroughs; do not exercise live publication or modify external projects to validate instructions.
+
+| ID | Preconditions | Action | Expected result | Failure condition |
+| --- | --- | --- | --- | --- |
+| K01 | Six skill folders present | Parse frontmatter and run an available specification/authoring validator on each | Required metadata, valid matching directory/name, nonempty description/body, supported fields | Invalid metadata, missing skill, or unfinished scaffold |
+| K02 | Skill descriptions and invocation examples available | Compare each positive and unrelated prompt in the skills README with its description | Relevant skill selected; unrelated task excluded; no forced sequence for trivial work | Broad triggers attract unrelated work or mandatory planning ceremony |
+| K03 | Representative requests from K02 and each skill body | Walk through intended output, evidence, uncertainty, and stopping point for all six skills | Each requested outcome covered; observations, assumptions, and recommendations distinguishable | Missing outcome, premature implementation, or unexecuted checks reported as passed |
+| K04 | Project has a verified policy pin different from the skills checkout, or lacks a verified policy source | Trace policy resolution for implementation/release preparation | Project's verified policies used; missing-source limits reported under adoption policy | Duplicated release rules, silent policy upgrade, or invented compliance |
+| K05 | Discussion agreement, design-only/review/retro request, or release-readiness request without mutation authority | Inspect proposed actions against skill boundaries and SECURITY.md | Only authorized scope; no implied file writes, fixes, bump, commit, tag, push, or publication | Skill selection, agreement, available credentials, or preparation treated as additional authorization |
+| K06 | Canonical folders and documented relative discovery examples in an isolated layout | Resolve links and compare installed files with source; parse YAML examples | Same content reachable without maintained copies; host limitations identified | Broken relative references, machine-specific paths, or unsupported discovery claims |
+| K07 | All skill metadata and bodies available | Measure size and inspect conditional context pointers | Concise selection metadata; only relevant skill/policies loaded; cost reported | Unnecessary bulk context, duplicated standards, or unused resources |
+
 ## Recording results
 
 Record case ID, applicability/rationale, source/config/standards revisions, preconditions, test action, observed result, pass/fail, evidence location and any gap owner. Logs MUST be redacted. A failed release test passes its acceptance case when it fails safely as specified; a green workflow is not always the expected result.

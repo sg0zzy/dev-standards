@@ -12,4 +12,6 @@ Read [README.md](README.md) and the policy that owns the area being changed. Thi
 - Check relative links, YAML examples, placeholder labels and coverage of the acceptance cases. Use temporary validation tools if available; do not introduce a shared implementation to demonstrate compliance.
 - Do not claim an application complies without evidence from that application's implementation. Do not modify external repositories as part of standards maintenance unless separately requested.
 
+For optional task-specific AI workflows, see [ai-skills/README.md](ai-skills/README.md). Load only a relevant skill; the root policies continue to own standards and permissions.
+
 Project adoption instructions belong in [templates/AGENTS.project.md](templates/AGENTS.project.md); this file governs the standards repository itself.

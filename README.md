@@ -35,6 +35,8 @@ Start adoption with [ADOPTION.md](ADOPTION.md), [the project template](templates
 
 The [initial review report](REVIEW.md) records deliverables, decisions, validation limits, and an example agent adoption prompt.
 
+Optional [AI skills](ai-skills/README.md) provide portable approaches to exploration, design, implementation, review, release preparation, and session retrospectives. They complement the policies without changing standards adoption, compliance obligations, or agent permissions.
+
 ## Separate concepts
 
 | Term | Meaning |
