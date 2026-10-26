@@ -13,6 +13,7 @@ Repository-owned instructions:
 - Local builds, checks and host capabilities: `<DOCUMENT_AND_COMMANDS>`.
 - Build matrix and package verification: `<DOCUMENT_OR_CONFIG>`.
 - Local artifact cleanup dry-run and protection: `<DOCUMENT_AND_COMMANDS>`.
+- Host-local publishing (adopted or declined): `<DOCUMENT_AND_COMMANDS_OR_NOT_ADOPTED>`; where adopted, invoke only the documented release/publish step under the pinned ARTIFACTS.md host-local publishing rules, never from ordinary build or test commands.
 - Git exclusions: apply the pinned snapshot's ARTIFACTS.md Git exclusions in the root `.gitignore`; verify effective ignore behavior and absence of tracked files in the excluded directories.
 - Beta, stable preparation and recovery: `<DOCUMENT_AND_COMMANDS>`.
 - Distribution matrix, signing identities and authorization: `<DOCUMENT_OR_CONFIG>`.

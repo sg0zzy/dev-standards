@@ -62,3 +62,20 @@ Deletion MUST be restricted to positively validated managed direct children of t
 Projects MUST document a manual cleanup procedure with a nonmutating dry-run reporting candidate paths, reasons, identities, protection, and retained/skipped builds. Actual deletion MUST replan/revalidate under the lock; a dry-run is not a permanent authorization for stale paths. Manual deletion MUST retain the same containment/ownership protections. Removing `.keep`, abandoned/in-progress or failed builds requires explicit selection and confirmation in the project's interface; automatic retention MUST NOT do it.
 
 Illustrative procedure: stop or inspect abandoned jobs; run `<project-tool> artifacts clean --dry-run`; review candidates; run the documented apply operation; inspect a deletion audit/summary. Projects SHOULD report cleanup failure separately from compilation success, return a clear maintenance failure, and preserve unvalidated directories. A cleanup failure MUST NOT retroactively claim compilation failed or erase successful output metadata.
+
+## Optional host-local publishing
+
+Projects sharing a build host MAY adopt host-local publishing: copying a successful build's final artifacts to a host-local directory in addition to `local_artifacts/` preservation. This is not external distribution under [DISTRIBUTION.md](DISTRIBUTION.md); it changes no destination mode, release state, or delivery evidence, and publishing to it MUST NOT be reported as release or delivery success. On a publishing host the shared directory is a copy destination, and the secret exclusions of [SECURITY.md](SECURITY.md) still apply to everything published.
+
+When adopted:
+
+- The default eligible-host condition is that the build host's short hostname is exactly `AI395`; projects MAY override the host list and the destination root. The default destination is `/srv/artifacts/<repo-name>/`, created when missing. On any other host publishing MUST be a successful no-op that creates or changes nothing, and existing build behavior MUST NOT otherwise change.
+- `<repo-name>` MUST come from the basename of the Git repository root, never the current working directory. When it cannot be derived, publishing MUST fail visibly rather than guess; an explicitly configured name MAY serve as the fallback.
+- Publishing MUST copy, never move, the final distributable artifacts named by the invocation; the originals remain in the completed build directory. Only declared final artifacts are published: temporary files, caches, and intermediate build directories MUST NOT be.
+- The operation MUST accept any number of file and directory arguments, including paths containing spaces, and MUST verify each declared artifact exists before creating any output, failing without a partial publication when one is missing.
+- Permission and copy/install failures MUST produce a failed status identifying the artifact and destination. A publish MUST NOT report success unless every declared artifact was verified present at the destination.
+- Republishing identical bytes MAY be a no-op success. Differing existing destination bytes MUST cause a refusal, never a silent overwrite; publish a distinct artifact name or remove the existing copy deliberately.
+- Publishing MUST run only where the project explicitly integrated it into its documented release/publish step. Ordinary development, test, and ordinary CI commands MUST NOT publish; the host condition is a capability gate, not an authorization.
+- Projects SHOULD centralize the behavior in one reusable helper - a vendored copy of [`examples/bin/publish-artifacts.sh`](examples/bin/publish-artifacts.sh) or an equivalent in their own tooling - keeping repository integration to a minimal invocation. The effective host condition, root, integrated step, and any overrides MUST be documented with the project's build commands.
+
+Illustrative per-ecosystem integrations (Rust, Android/Gradle, Tauri, Node.js) are in [examples/artifact-publishing.md](examples/artifact-publishing.md). Adoption is recorded and tested like any other optional contract: cases H01–H07 in [COMPLIANCE.md](COMPLIANCE.md#host-local-publishing).

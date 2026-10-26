@@ -135,6 +135,20 @@ These cases exercise [VERSIONING.md](VERSIONING.md#explicit-version-bump) and th
 | P02 | Explicit migration request with old/new pins | Review delta, implement, validate and update adoption | Snapshot/mapping/pin/evidence updated coherently; identities preserved; extra distribution separately authorized | Pin-only upgrade, erased reservations or accidental new deployment |
 | P03 | Native metadata used instead of example YAML | Audit mapping and inject unknown target/invalid mode | Equivalent concepts documented; invalid operation blocked; no duplicated editable version | Configuration silently permissive or mandatory concept missing |
 
+## Host-local publishing
+
+These cases exercise [ARTIFACTS.md](ARTIFACTS.md#optional-host-local-publishing) and apply only where a project adopted that optional contract. Use isolated publishing-root fixtures and hostname injection or an equivalent host-condition override; cases MUST NOT write to a real `/srv` or require the physical host.
+
+| ID | Preconditions | Action | Expected result | Failure condition |
+| --- | --- | --- | --- | --- |
+| H01 | Adopted project; host condition not satisfied (non-`AI395` short hostname or unlisted override) | Run the integrated publish step and an ordinary build | Publish exits successfully creating nothing; build behavior and outputs unchanged | Any created/changed path or altered build behavior on a non-publishing host |
+| H02 | Eligible host fixture; nested subdirectory of the repository; artifacts and directories whose names contain spaces; destination absent | Run the documented publish step | Files and directory trees copied to `<root>/<git-root-name>/` under that name regardless of working directory; destination created; originals intact | Destination derived from the working directory, moved originals, or broken spaced paths |
+| H03 | Eligible fixture; one declared artifact absent | Publish | Visible failure naming the missing artifact; nothing published, including other valid arguments | Partial publication or success reported |
+| H04 | Eligible fixture; destination root unwritable or a copy injects failure | Publish | Failing status identifying the artifact/destination and permission-vs-copy cause; no success claim | Silent failure or reported success after failed copy |
+| H05 | Identical bytes already published; separately, differing bytes at one destination name | Republish each | Identical republish is a no-op success; differing bytes refused with existing bytes preserved | Silent overwrite of differing destination content |
+| H06 | Eligible host; ordinary build/test/CI commands available with publishing credentials present incidentally | Run ordinary commands | No publishing occurs; only the explicitly integrated release/publish step publishes | Ordinary development/test/CI invocation copies to the shared root |
+| H07 | Adoption record and documentation exist | Inspect docs/config and complete a publish | Effective host condition, root, integrated step and overrides documented with build commands; publication never reported as release/store delivery; no cache or intermediate directory published | Undocumented behavior, delivery-success conflation, or intermediates/caches published |
+
 ## Optional AI skills
 
 These checks apply to maintenance of the optional [AI skills collection](ai-skills/README.md), not application compliance. Projects need not install skills. Skill bodies own workflow guidance; the policies above retain their existing scope and authority. Use temporary validation tools and nonmutating walkthroughs; do not exercise live publication or modify external projects to validate instructions.

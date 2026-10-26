@@ -1,0 +1,13 @@
+session,profile,test,metric,n,median,min,max,stdev,cv_percent,delta_percent_vs_baseline,comparable
+benchmark/example-output/baseline-96,baseline-96,throughput-4096,prefill_tps,5,1000.0,998.0,1002.0,1.5811388300841898,0.15811388300841897,0.0,True
+benchmark/example-output/baseline-96,baseline-96,throughput-4096,decode_tps,5,48.0,47.8,48.2,0.15811388300842122,0.32940392293421084,0.0,True
+benchmark/example-output/baseline-96,baseline-96,throughput-4096,ttft_s,5,4.22,4.2,4.24,0.015811388300841982,0.3746774478872508,0.0,True
+benchmark/example-output/baseline-96,baseline-96,throughput-4096,wall_s,5,15.2,15.0,15.4,0.15811388300841925,1.040222914529074,0.0,True
+benchmark/example-output/uma-64,uma-64,throughput-4096,prefill_tps,5,1020.0,1018.0,1022.0,1.5811388300841898,0.15501361079256765,2.0000000000000018,True
+benchmark/example-output/uma-64,uma-64,throughput-4096,decode_tps,5,47.5,47.3,47.7,0.15811388300842122,0.33287133264930785,-1.041666666666663,True
+benchmark/example-output/uma-64,uma-64,throughput-4096,ttft_s,5,4.22,4.2,4.24,0.015811388300841982,0.3746774478872508,0.0,True
+benchmark/example-output/uma-64,uma-64,throughput-4096,wall_s,5,15.2,15.0,15.4,0.15811388300841925,1.040222914529074,0.0,True
+benchmark/example-output/uma-512m,uma-512m,throughput-4096,prefill_tps,5,980.0,978.0,982.0,1.5811388300841898,0.1613406969473663,-2.0000000000000018,True
+benchmark/example-output/uma-512m,uma-512m,throughput-4096,decode_tps,5,46.0,45.8,46.2,0.15811388300842122,0.3437258326270026,-4.1666666666666625,True
+benchmark/example-output/uma-512m,uma-512m,throughput-4096,ttft_s,5,4.22,4.2,4.24,0.015811388300841982,0.3746774478872508,0.0,True
+benchmark/example-output/uma-512m,uma-512m,throughput-4096,wall_s,5,15.2,15.0,15.4,0.15811388300841925,1.040222914529074,0.0,True

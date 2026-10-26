@@ -1,0 +1,53 @@
+{
+  "url": "http://127.0.0.1:8080",
+  "engine_pid": null,
+  "engine_binary": "/absolute/path/to/strata-engine",
+  "strata_cli": "/absolute/path/to/strata",
+  "model": "qwen3.8-flash-next",
+  "quantization": "Unsloth UD-IQ4_XS",
+  "model_files": [
+    "/absolute/path/to/model.gguf"
+  ],
+  "tokenizer_files": [
+    "/absolute/path/to/tokenizer.json",
+    "/absolute/path/to/vocab.json",
+    "/absolute/path/to/merges.txt"
+  ],
+  "launch_config": "/absolute/path/to/strata-config.json",
+  "gpu_device": "/sys/class/drm/card0/device",
+  "uma_current": null,
+  "uma_options": null,
+  "expected": {
+    "context_tokens": 262144,
+    "expert_slots": 24576,
+    "kv": "int8",
+    "expert_cache": "REPLACE_WITH_EXPLICIT_SIZE_FROM_ENGINE_ARGUMENTS",
+    "engine_info": {
+      "drafting": "mtp",
+      "REPLACE_WITH_EFFECTIVE_SPECULATION_INFO_FIELD": "expected value"
+    }
+  },
+  "sampling": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "min_p": 0.0,
+    "presence_penalty": 0.0,
+    "repetition_penalty": 1.0,
+    "thinking": {
+      "type": "enabled",
+      "budget_tokens": 0
+    },
+    "reasoning_budget_tokens": 0,
+    "output_config": {
+      "effort": "high"
+    }
+  },
+  "seed": 395,
+  "output_tokens": 512,
+  "context_margin": 64,
+  "sample_interval": 2.0,
+  "request_timeout": 1800,
+  "background_notes": "Record unavoidable workloads; reserve this server for this suite.",
+  "startup_notes": "Record service/unit/container and source/build revision here."
+}

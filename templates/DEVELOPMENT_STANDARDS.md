@@ -25,6 +25,7 @@
 | Build matrix by local/CI/beta/stable | `<CONFIG_OR_TABLE>` |
 | Local prerequisites, commands and dirty-source identity | `<DOCUMENT>` |
 | Artifact manifest, local counter scope/recovery, retention limit, dry-run/protection | `<DOCUMENT>` |
+| Host-local publishing (adopted or declined; host condition, root, integrated step) | `<DOCUMENT_OR_NOT_ADOPTED>` |
 | Git exclusions under the pinned ARTIFACTS.md policy | `<ROOT_GITIGNORE_AND_VALIDATION_EVIDENCE>` |
 | CI checks, PR revision and temporary retention | `<DOCUMENT>` |
 | Shared beta/stable reservation and publication coordination | `<DOCUMENT>` |

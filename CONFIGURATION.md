@@ -12,7 +12,7 @@ Projects SHOULD describe their adoption in declarative configuration such as [pr
 | Development state | Declared version and derived core under [VERSIONING.md](VERSIONING.md#forms); local and beta counter scopes/storage mapped separately |
 | Build matrix | Target definitions and per-context mandatory/optional selections; host capabilities |
 | Validation | Required checks, documented exclusions, package verification gates |
-| Local storage | Root, retention override/default, manager/schema, cleanup/protection interface and local counter scope/durable recovery mapping |
+| Local storage | Root, retention override/default, manager/schema, cleanup/protection interface, local counter scope/durable recovery mapping, and host-local publishing mapping (eligible host, root, integrated step) or explicit non-adoption per [ARTIFACTS.md](ARTIFACTS.md#optional-host-local-publishing) |
 | CI | Branch, PR revision policy, artifacts and retention |
 | Releases | Beta dispatch, stable tag pattern, common allocation/publication coordination, notes baseline |
 | Signing | Per-target profile, requiredness, nonsecret certificate/credential references |

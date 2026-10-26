@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "protocol": "strata-uma-local-v1",
+  "profile": "baseline-96",
+  "status": "complete",
+  "synthetic_example": true,
+  "identity": {
+    "synthetic_example": true,
+    "workload": "example-only"
+  },
+  "planned_cases": [
+    {
+      "id": "throughput-4096-0",
+      "kind": "throughput",
+      "target": 4096
+    },
+    {
+      "id": "throughput-4096-1",
+      "kind": "throughput",
+      "target": 4096
+    },
+    {
+      "id": "throughput-4096-2",
+      "kind": "throughput",
+      "target": 4096
+    },
+    {
+      "id": "throughput-4096-3",
+      "kind": "throughput",
+      "target": 4096
+    },
+    {
+      "id": "throughput-4096-4",
+      "kind": "throughput",
+      "target": 4096
+    },
+    {
+      "id": "recall-131072",
+      "kind": "recall"
+    }
+  ],
+  "warnings": [
+    "SIMULATED EXAMPLE ONLY. All rates, timings, settings and outcomes are invented to demonstrate formatting.",
+    "No system, memory, I/O or model metadata was measured. Fields are omitted rather than fabricated."
+  ],
+  "kernel_events": {
+    "coverage": "unavailable",
+    "events": []
+  }
+}

@@ -21,7 +21,7 @@ A configurable default means projects MUST apply that value when no explicit val
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Architecture principles, conditional technology preferences and selection flexibility |
 | [VERSIONING.md](VERSIONING.md) | Declared versions, explicit bumps, generated identities, ordering and allocation constraints |
 | [BUILD.md](BUILD.md) | Local/CI behavior and build matrix |
-| [ARTIFACTS.md](ARTIFACTS.md) | Manifests, preservation, retention and cleanup |
+| [ARTIFACTS.md](ARTIFACTS.md) | Manifests, preservation, retention, cleanup and host-local publishing |
 | [RELEASE.md](RELEASE.md) | Beta/stable state machines, notes and recovery |
 | [ANDROID.md](ANDROID.md) | Android signing, update paths and numeric versions |
 | [DISTRIBUTION.md](DISTRIBUTION.md) | Destination modes, channel selection and delivery |
@@ -31,7 +31,7 @@ A configurable default means projects MUST apply that value when no explicit val
 | [COMPLIANCE.md](COMPLIANCE.md) | Technology-independent acceptance cases |
 | [AGENTS.md](AGENTS.md) | Instructions for maintaining this standards repository |
 
-Start adoption with [ADOPTION.md](ADOPTION.md), [the project template](templates/DEVELOPMENT_STANDARDS.md), and [the configuration example](examples/project-config.example.yml). See [workflow patterns](examples/github-actions-patterns.md), [release scenarios](examples/release-scenarios.md), and [Android examples](examples/android-versioning.md).
+Start adoption with [ADOPTION.md](ADOPTION.md), [the project template](templates/DEVELOPMENT_STANDARDS.md), and [the configuration example](examples/project-config.example.yml). See [workflow patterns](examples/github-actions-patterns.md), [release scenarios](examples/release-scenarios.md), [Android examples](examples/android-versioning.md), and [host-local artifact publishing](examples/artifact-publishing.md).
 
 The [initial review report](REVIEW.md) records deliverables, decisions, validation limits, and an example agent adoption prompt.
 

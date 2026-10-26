@@ -85,6 +85,13 @@ local_artifacts:
   retain_successful_unprotected: 10 # Omission defaults to 10; explicit override permitted.
   ordering: locked-completion-sequence
   source_identity: canonical-input-snapshot-sha256
+  host_local_publishing: # Optional per ARTIFACTS.md; omit or mark not-adopted otherwise.
+    enabled: true
+    host_condition: short-hostname-equals-AI395
+    root: /srv/artifacts
+    destination: per-git-repository-root-name
+    integrated_step: docs/development.md#publish # Release/publish step only; never ordinary build/test/CI.
+    helper: tools/publish-artifacts.sh
 ci:
   primary_branch: main
   events: [push, pull_request]
