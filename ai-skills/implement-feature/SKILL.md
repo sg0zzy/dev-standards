@@ -9,6 +9,7 @@ Read project instructions, relevant code, established decisions, and acceptance 
 
 - Inspect the working tree and preserve existing user changes. Implement the agreed outcome with focused, proportionate changes that fit the architecture. Avoid unrelated refactoring, speculative abstractions, or additional features.
 - Resolve routine technical choices autonomously. If evidence invalidates an agreed decision, explain the consequence; seek clarification only when the resulting change materially exceeds the authorized scope. Continue independent work where possible.
+- When asked to address review findings, verify them against the current source before editing. Fix supported issues within scope; explain rejected or deferred findings with evidence and identify decisions requiring user input. A reviewer's claim or the author's intent alone is not proof.
 - Run checks that exercise the changed behavior and applicable acceptance criteria, using existing deterministic scripts/tests. Add coverage for material new behavior or regressions where useful; avoid tests that merely mirror the implementation. Inspect the final diff for unintended changes.
 - Report the result, checks actually executed and their outcomes, deviations from the design, limitations, and unresolved issues. Label unrun or unavailable checks explicitly; never report tests as passed without execution evidence.
 

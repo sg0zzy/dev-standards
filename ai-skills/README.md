@@ -13,11 +13,13 @@ Explicitly name a skill and the intended outcome. Codex CLI/IDE supports `$skill
 | [explore-idea](explore-idea/SKILL.md) | `$explore-idea Would a local cache solve our slow search? Compare simpler options; keep this a discussion.` | An already agreed code change |
 | [design-feature](design-feature/SKILL.md) | `$design-feature Design the agreed CSV import, with acceptance criteria and a handoff here in chat.` | A one-line label edit |
 | [implement-feature](implement-feature/SKILL.md) | `$implement-feature Implement the agreed import validation milestone and run relevant checks.` | A request to compare design options |
-| [review-change](review-change/SKILL.md) | `$review-change Review the working diff for regressions; return findings only.` | A routine implementation self-check |
+| [review-change](review-change/SKILL.md) | `$review-change Review the working diff for regressions; return findings only.` Or: `$review-change Review this feature design for implementation blockers; keep findings in chat.` | A routine implementation self-check or a request to implement fixes |
 | [prepare-release](prepare-release/SKILL.md) | `$prepare-release Assess stable 1.4.0 readiness using our pinned policies. Do not bump, commit, tag, push, or publish.` | A local build or completed feature |
 | [session-retro](session-retro/SKILL.md) | `$session-retro Identify recurring wasted tool calls in this session and propose one measurable improvement.` | An isolated typo or ordinary coding task |
 
 Discussion can end with a recommendation, design with a handoff, implementation with verified changes, review with findings, release preparation with readiness evidence, and a retrospective with a small proposal. There is no automatic transition between them. Facts, assumptions, proposed decisions, and agreed decisions should remain distinguishable in these outputs.
+
+For a substantial design, exploration preserves the rationale and rejected alternatives, design makes the handoff understandable without earlier chat, and review tests the proposal against its sources. These are independently useful practices, not required stages. Ask for a fresh-context review explicitly when useful, for example `$review-change Review docs/designs/import.md in a fresh context; return findings only.` The review skill owns isolation and fallback guidance. To apply findings, request implementation within a defined scope; findings alone do not authorize edits.
 
 ## Installation and discovery
 
@@ -49,11 +51,13 @@ Use a chosen immutable skills revision for reproducibility and update deliberate
 
 Only metadata is needed for selection; load a selected body and applicable project context on demand. The installer only creates local links; skill workflows need no executable dependency. Prefer existing deterministic checks for mechanical work. Natural-language boundaries guide behavior; they are not a tool sandbox or an enforcement mechanism. Discovery, link support, and implicit selection remain host/version dependent.
 
+The [Elephant-Goldfish Model](https://github.com/google/elephant-goldfish-model/tree/05f8984cb6e0077b072ba034f66d95ffdde200ee), inspected from a local checkout at that revision, informed the distinction between context-rich authoring and fresh-context review. In particular, its [comprehension review](https://github.com/google/elephant-goldfish-model/blob/05f8984cb6e0077b072ba034f66d95ffdde200ee/agents/comprehension.md), [implementation readiness](https://github.com/google/elephant-goldfish-model/blob/05f8984cb6e0077b072ba034f66d95ffdde200ee/resources/document_standards/implementation-readiness-standard.md), and [finding resolution](https://github.com/google/elephant-goldfish-model/blob/05f8984cb6e0077b072ba034f66d95ffdde200ee/skills/egm-resolve/SKILL.md) informed the handoff and evidence checks. These skills adapt those ideas without depending on EGM, imposing fixed review stages, requiring artifact writes or section approvals, or removing implementer discretion over routine choices.
+
 ## Validation
 
 Use the optional [skill acceptance cases](../COMPLIANCE.md#optional-ai-skills) when changing this collection. Validate every folder with the specification's `skills-ref validate PATH` or an available skill-authoring validator; no validator is required by adopting projects. Check relative links, YAML examples, and source references with temporary tooling. Review each positive/negative invocation above and the authorization cases; a schema check alone does not prove behavior.
 
-Local validation on 2026-10-21:
+Initial collection validation on 2026-10-21 (before the EGM-informed updates):
 
 - All six skills passed `skills-ref` at revision `69ef37e9424c0a7ea9dd2293b559e43ec8176379` and the available Codex skill-authoring validator. A six-entry discovery manifest was generated successfully. Validators were temporary tools, not repository dependencies.
 - Integration checks resolved 114 relative links/anchors, parsed 12 YAML documents (including all six frontmatters), and checked the structure/unique IDs of 94 acceptance cases, including K01–K09. `bash -n` and `git diff --check` passed.
@@ -61,5 +65,11 @@ Local validation on 2026-10-21:
 - Running the installer against the actual user directory found all six links already correct and left them and the unrelated skill unchanged. All six skills are present in this session's available-skills catalog.
 - Manual instruction walkthroughs covered the six positive and six unrelated prompts above, expected outputs, discussion agreement, design/review/retro-only requests, release readiness without mutation authority, older/missing pinned policies, and unavailable tests. These are instruction reviews, not executed model evaluations.
 - Full skill files measured 252–470 tokens each; combined names/descriptions measured 244 tokens using `cl100k_base`. Actual host/model tokenization and discovery overhead vary.
+
+Local validation of the EGM-informed updates on 2026-10-28:
+
+- All six skills passed the available Codex skill-authoring validator. Temporary checks validated six frontmatters, example YAML, 27 relative links/anchors in changed documents, and 105 unique acceptance IDs including K01–K13. Full skill files contain 239–373 whitespace-separated words each (1,833 total); this is a size measure, not model token usage. `git diff --check` passed.
+- Manual instruction walkthroughs covered the README's positive/negative prompts and K10–K13: a cache proposal with an untested assumption; a CSV-import handoff missing duplicate/error behavior; design and code review; requested isolation with/without support; and an authorized fix request mixing valid, unsupported, and out-of-scope findings. The instructions preserve discussion-only output, expose material gaps, require evidence before fixes, and retain existing authorization. These were instruction reviews, not executed agent evaluations.
+- Changes affect optional task guidance and design-review routing only. Standards obligations, policy pins, installer behavior, and release permissions are unchanged. Fresh-context execution and model selection behavior were not exercised.
 
 Interactive Codex `/skills`, behavioral selection in fresh agent sessions, other hosts, and Windows link tooling were not exercised. Format validation and filesystem discovery fixtures do not establish cross-agent behavioral guarantees or application compliance.
