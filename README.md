@@ -19,6 +19,9 @@ A configurable default means projects MUST apply that value when no explicit val
 | Document | Owns |
 | --- | --- |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Architecture principles, conditional technology preferences and selection flexibility |
+| [DESIGN.md](DESIGN.md) | Design-record applicability, self-containment, approval state and reconciliation with code |
+| [MOQAI.md](MOQAI.md) | Optional visual UI specifications, human review and wireframe preservation |
+| [VISUAL-STYLE.md](VISUAL-STYLE.md) | Optional web visual style: reference, structure/style separation, motion and external-reference rules |
 | [VERSIONING.md](VERSIONING.md) | Declared versions, explicit bumps, generated identities, ordering and allocation constraints |
 | [BUILD.md](BUILD.md) | Local/CI behavior and build matrix |
 | [ARTIFACTS.md](ARTIFACTS.md) | Manifests, preservation, retention, cleanup and host-local publishing |
@@ -35,7 +38,13 @@ Start adoption with [ADOPTION.md](ADOPTION.md), [the project template](templates
 
 The [initial review report](REVIEW.md) records deliverables, decisions, validation limits, and an example agent adoption prompt.
 
-Optional [AI skills](ai-skills/README.md) provide portable approaches to exploration, design, implementation, review, release preparation, and session retrospectives. They complement the policies without changing standards adoption, compliance obligations, or agent permissions.
+Optional [AI skills](ai-skills/README.md) provide portable approaches to exploration, design, implementation, review, release preparation, session retrospectives, [Moqai wireframing](examples/moqai-workflow.md), web visual style ([style skill](ai-skills/define-web-style/SKILL.md)), and read-only design-record [drift audits](ai-skills/audit-doc-drift/SKILL.md). They complement the policies without changing standards adoption, compliance obligations, or agent permissions.
+
+To enable visual wireframing in an existing application, follow [Enable Moqai in a project](examples/moqai-workflow.md#enable-in-an-existing-project), including the copyable project instructions and first-use prompts.
+
+To adopt the optional design-record and drift practice in an existing repository, follow [DESIGN.md](DESIGN.md): record the design-record location, approval convention and drift-audit practice in the project instructions or adoption record, then request a read-only audit with the [drift skill](ai-skills/audit-doc-drift/SKILL.md) when a record and its source need comparing.
+
+For a new or restyled web surface, follow [VISUAL-STYLE.md](VISUAL-STYLE.md): keep one short project-owned style reference beside the design records, honor the accessibility/performance floors, and treat gallery screenshots and exports as cited inspiration, never as assets.
 
 ## Separate concepts
 

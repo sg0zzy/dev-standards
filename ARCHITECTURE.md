@@ -34,6 +34,18 @@ When synchronization is implemented, its design MUST account for disconnected op
 
 Synchronization and migrations MUST NOT silently lose valuable user data. Failures MUST preserve recoverable source data and report incomplete outcomes. Potentially destructive conflict resolution or schema/format changes MUST provide a recovery path or obtain informed user action before irreversible loss. Projects SHOULD use validated transactions, snapshots/backups or equivalent safeguards appropriate to their storage. Recovery tests MUST cover representative interruption and incompatible/corrupt-input cases for implemented synchronization/migration paths. Explicit user-requested deletion MAY remove data according to the application's disclosed behavior.
 
+## Visual interface design
+
+[MOQAI.md](MOQAI.md) owns the preferred optional workflow for significant UI design and redesign, including existing wireframe discovery and human review. Wireframes guide UI intent; they do not select the application stack or replace independent recovery, offline, privacy and platform-integration review.
+
+## Web visual style
+
+[VISUAL-STYLE.md](VISUAL-STYLE.md) owns the optional visual-style contract for web surfaces: a short project-owned style reference, semantic structure that stays independent of theme, first-viewport and motion rules, and the accessibility/performance floors a style never lowers. It does not select a CSS approach or replace the platform-integration and accessibility review above.
+
+## Design records
+
+[DESIGN.md](DESIGN.md) owns when a substantial change SHOULD have a reviewable design record, what makes a record usable without its original conversation, how approval state is discoverable, and how records are reconciled with implemented code. Design records capture intent; they do not replace the independent recovery, offline, privacy, platform-integration and security review above.
+
 ## Conditional technology preferences
 
 The following defaults apply when selecting new components for a suitable new project or a justified substantive change. They are project preferences, not claims that the technology's authors prescribe this stack.

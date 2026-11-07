@@ -19,6 +19,9 @@
 | Policy concept | Native implementation and authoritative location |
 | --- | --- |
 | Architecture, stack rationale, offline/privacy behavior and data export/backup/sync recovery | `<DOCUMENT_AND_APPLICABLE_SCOPE>` |
+| Design records (location, approval convention, index, drift-audit practice and reconciliation decisions) | `<DOCUMENT_OR_NOT_ADOPTED>` |
+| Web visual style references per surface (color/type/space/motion, floors), if applicable | `<DOCUMENT_OR_NOT_APPLICABLE>` |
+| Moqai visual UI workflow, if applicable (documents, independent tool source/version, commands) | `<DESIGN_RECORD_OR_NOT_ENABLED_OR_NOT_APPLICABLE>` |
 | Application version, declared development state and generated mirrors | `<PATH_FIELDS_AND_MAPPING>` |
 | Explicit version bump, dry-run, selective commit and recovery | `<DOCUMENT_AND_COMMANDS>` |
 | Compatibility surface and version-zero promises | `<DOCUMENT>` |

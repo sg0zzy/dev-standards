@@ -7,6 +7,8 @@ description: Implement an agreed feature or milestone when the user requests cod
 
 Read project instructions, relevant code, established decisions, and acceptance criteria. Resolve applicable development standards through the project's adoption record and verified pinned source; respect higher-priority instructions. Use the project's documented commands and permissions. A clear implementation request is sufficient scope; do not require a separate planning ceremony.
 
+For relevant UI work, consult the adopted MOQAI.md when present and existing project wireframes; use the optional `moqai` skill when that workflow is selected. Where the request names an approved design record, implement against it, report deviations from it, and apply the adopted DESIGN.md when present. Preserve the project's verified policy pin.
+
 - Inspect the working tree and preserve existing user changes. Implement the agreed outcome with focused, proportionate changes that fit the architecture. Avoid unrelated refactoring, speculative abstractions, or additional features.
 - Resolve routine technical choices autonomously. If evidence invalidates an agreed decision, explain the consequence; seek clarification only when the resulting change materially exceeds the authorized scope. Continue independent work where possible.
 - When asked to address review findings, verify them against the current source before editing. Fix supported issues within scope; explain rejected or deferred findings with evidence and identify decisions requiring user input. A reviewer's claim or the author's intent alone is not proof.

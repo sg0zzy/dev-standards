@@ -13,7 +13,9 @@ Establish whether the target is code or a design, its scope, and the comparison 
 - Report actionable findings in severity order using the project's severity convention, or plain critical/high/medium/low impact labels when none exists. Cite concrete files and line locations, explain the trigger and consequence, and suggest the smallest useful correction.
 - Note material test coverage gaps and validation limits. If no actionable findings remain, say so without implying exhaustive correctness or claiming unexecuted tests passed. Keep the review proportional to the change.
 
-For an explicitly requested fresh-context review, use a separate reviewer only when delegation is permitted and available. Supply the target, scope, project instructions, and source/policy pointers without the author's conversation or preferred verdict. Verify and deduplicate returned findings against evidence. If isolation is unavailable, report that limitation; an in-context check is not an independent fresh-context review.
+For an explicitly requested fresh-context review, use a separate reviewer only when delegation is permitted and available. Supply the target, scope, project instructions, and source/policy pointers without the author's conversation or preferred verdict. Verify and deduplicate returned findings against evidence. Isolation covers the conversation, not the filesystem or the reviewer's own host instructions; do not claim more independence than the mechanism provides. If isolation is unavailable, report that limitation; an in-context check is not an independent fresh-context review.
+
+A requested comparison of a document or spec against current source (divergences, staleness) is a drift audit, not a code review; use the `audit-doc-drift` skill for it and keep the two results separate.
 
 After authorized fixes, recheck affected findings and behavior; stop when they are resolved or remaining blockers need user input, rather than looping for cosmetic improvements.
 

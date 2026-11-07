@@ -7,6 +7,8 @@ description: Turn an agreed feature direction into a scoped design with acceptan
 
 Inspect the relevant architecture, conventions, existing decisions, and project instructions. Resolve applicable standards through the project's adoption record; respect higher-priority instructions. If the direction is unsettled, clarify only the decision that blocks a useful design.
 
+For relevant UI work, consult the adopted MOQAI.md when present and existing project wireframes; use the optional `moqai` skill when that workflow is selected. For a substantial change, apply the adopted DESIGN.md when present: keep one reviewable record in the project's chosen location, make the approval state discoverable, and implement only after the required approval and a separate request. Preserve the project's verified policy pin.
+
 - Define the outcome, scope boundaries, constraints, dependencies, and observable acceptance criteria. Distinguish verified behavior from assumptions and proposed decisions.
 - Describe how the change fits the existing system, citing concrete modules or interfaces. Address significant risks and credible alternatives with rationale; prefer existing mechanisms over speculative abstractions.
 - For affected interfaces or state, specify observable behavior, failure paths, compatibility, and recovery where relevant. Tie acceptance criteria to concrete scenarios and checks; do not use a technology choice as evidence that these behaviors are covered.

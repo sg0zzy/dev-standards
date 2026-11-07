@@ -17,6 +17,18 @@ Agents MUST use the project's pinned revision over an unrelated newer central co
 
 The snapshot MUST contain the normative documents needed for the adopted scopes and their cross-references. Projects SHOULD vendor the full documentation set for simplicity. Repository-native snapshot validation MAY use Git object identity plus file digests or an equivalent verifiable archive. No central availability dependency is required for normal builds.
 
+## Optional visual UI workflow
+
+For graphical UI work, include [MOQAI.md](MOQAI.md) in the verified policy source and follow the [setup guide](examples/moqai-workflow.md) when enabling Moqai. Record existing project-local documents and the independent Moqai installation/source in project instructions or design records; use the project template's optional mapping. No central configuration, application dependency, automatic initialization or global agent configuration change is needed. The [portable skill](ai-skills/moqai/SKILL.md) can be installed separately from standards adoption.
+
+## Design records and drift
+
+For substantial changes, apply [DESIGN.md](DESIGN.md) from the verified policy source: keep one reviewable record per substantial change in a project-chosen location, and record that location plus any index, approval convention and reconciliation practice in the adoption record or project instructions. Record the direction chosen for each reported divergence. Nothing here adds a directory requirement, tool, plugin, shared service or automatic documentation job; the [portable drift skill](ai-skills/audit-doc-drift/SKILL.md) installs independently of adoption and only reads.
+
+## Optional web visual style
+
+For projects with web surfaces, apply [VISUAL-STYLE.md](VISUAL-STYLE.md) from the verified policy source: keep one short style reference per styled surface beside the design records and record its location in project instructions. No framework, CSS methodology, design tool, or gallery subscription is introduced; third-party visual references stay external and cited. The [portable style skill](ai-skills/define-web-style/SKILL.md) installs independently of adoption.
+
 ## Migration
 
 A new central edition MUST NOT change existing projects automatically. A migration MUST:
